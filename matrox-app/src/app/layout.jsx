@@ -51,16 +51,16 @@ export default function RootLayout({ children }) {
                 About
               </Link>
               <Link
-                href={"/notes"}
+                href={"/hero"}
                 className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
-                Notes
+                Hero
               </Link>
               <Link
-                href={"/contact"}
+                href={"/login"}
                 className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
-                Contact
+                Login mas
               </Link>
             </div>
           </div>
