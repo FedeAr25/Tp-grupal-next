@@ -26,7 +26,8 @@ export default function page() {
           </div>
           <div className="w-85 h-45 bg-amber-950 flex flex-col items-center justify-center">
             <p>Artículo 4</p>
-            </div> 
+            </div>
+            daidsadsa 
             
 
         </section>
