@@ -11,7 +11,7 @@ export default function page() {
         <Image src="/gabinete.png" alt="banner" width={900} height={500} />
       </div>
       {/*Cartas de productos */}
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-y-30 gap-x-5 bg-amber-500 p-3 mt-40 mb-10">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-y-30 gap-x-5 bg-white/30 p-6 rounded-lg mt-40 mb-10">
         {/*Carta 1 */}
         <div className="w-90 h-80 bg-white flex flex-col justify-center items-center relative rounded-lg shadow-lg hover:scale-105 transition-all duration-300">
           <div className="mb-20">
