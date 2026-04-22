@@ -25,15 +25,15 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col  ">
-        <nav className="bg-[url(/fondonav.webp)] bg-cover  bg-no-repeat">
-          <div className="bg-black/15 w-full h-full  text-background grid grid-cols-3 items-center px-8 ">
+        <nav className="bg-zinc-800 bg-cover  bg-no-repeat">
+          <div className="bg-black/15 w-full h-full  text-background items-center justify-between flex px-5">
             <div className="justify-self-start flex items-center gap-2">
               <Image
-                src="/background-removed.png"
+                src="/Matrox.png"
                 alt="Next.js Logo"
-                width={110}
-                height={110}
-                className="object-contain"
+                width={70}
+                height={70}
+                className="object-contain p-2"
               />
             </div>
 
@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        <footer className="pt-5 border-t border-white/10 flex  justify-between gap-10">
+        <footer className="pt-5 border-t border-white/80 flex bg-zinc-800 justify-between gap-8 items-center">
           <div className=" p-8 flex gap-8 text-gray-400 text-sm font-medium">
             <div className="flex flex-col">
               <span className="text-white text-xl font-bold">100%</span>
@@ -80,19 +80,19 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           <div className="flex flex-col py-7 ">
-            <h1>No dude en usar nuesta Pagina</h1>
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-200 to-red-600">
-              Todos los derechos reservados a aballo.inc
+            <h1 className="text-xl ">Matrox S.A. </h1>
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-300 to-red-400">
+              Todos los derechos reservados a Matrox S.A. &copy; 2026
             </span>
           </div>
 
-          <div>
-            <div className="bg-white rounded-full  py-6 px-6">
+          <div className="flex items-center justify-center p-6">
+            <div className="bg-linear-to-b from-cyan-600/40 via-violet-400/20 to-transparent rounded-full p-6">
               <Image
-                src="/nextjs-svgrepo-com.svg"
+                src="/Matrox.png"
                 alt="Next.js Logo"
-                width={60}
-                height={60}
+                width={80}
+                height={80}
                 className="object-contain"
               />
             </div>

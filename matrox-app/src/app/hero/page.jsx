@@ -285,7 +285,7 @@ export default function page() {
       </div>
       {/*Producto destacado */}
       <div className="mt-20">
-        <h2 className="text-center text-6xl uppercase font-bold bg-clip-text bg-linear-45 from-violet-700 to-green-300 text-transparent mb-10 animate-[pulse_0.7s_ease-in-out_infinite] shadow-lime-50 text-shadow-[0_0px_5px_rgb(255_255_255)] ">
+        <h2 className="text-center text-6xl uppercase font-bold bg-clip-text bg-linear-45 from-violet-700 to-green-300 text-transparent mb-10 animate-[pulse_0.7s_ease-in-out_infinite] shadow-lime-50 text-shadow-[0px_0px_5px_#ffaf] ">
           Producto Destacado
         </h2>
         <div className="w-200 h-200 bg-white flex flex-col justify-center items-center relative rounded-lg hover:scale-105 transition-all duration-300 m-20 bg-[url(/products/precentacion.png)] bg-cover bg-center">
