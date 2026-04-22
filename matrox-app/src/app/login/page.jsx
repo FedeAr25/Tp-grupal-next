@@ -1,40 +1,54 @@
 import React from "react";
-
+import Image from "next/image";
 export default function page() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="w-1/2 h-100 m-10 bg-gray-200 rounded-lg flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-black">Login</h1>
-        <p>
-          Welcome back! Please enter your credentials to access your account.
-        </p>
-        <form className="flex flex-col gap-4 mt-4 text-black">
-          <input
-            type="text"
-            placeholder="Username"
-            className="border border-gray-300 rounded p-2"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="border border-gray-300 rounded p-2"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="border border-gray-300 rounded p-2"
-          />
-          <div>
-            <label htmlFor="remember" className="text-sm">
-              Remember me
-            </label>
-            <input type="checkbox" id="remember" className="ml-2" />
-          </div>
+    <div className="w-full h-full bg-[url('/6074593.jpg')] bg-cover">
+      <div className="w-1/2 h-150 flex items-center justify-center mx-auto rounded-xl overflow-hidden m-10">
+        <div className="flex items-center justify-center w-1/2 h-full bg-[url('/componentes.png')]  bg-center rounded-l-xl">
+          <div className="w-full h-full bg-linear-to-t from-black/50 to-transparent flex items-center justify-center"></div>
+        </div>
+        <div className="flex flex-col gap-5 items-center justify-around w-1/2 h-full bg-white/40 ">
+          <div className="w-full h-full bg-linear-to-t from-black/50 to-transparent flex flex-col items-center justify-around">
+            <h3 className="text-2xl font-bold text-white">Inicia Sesion</h3>
+            <form action="" className="flex flex-col gap-1">
+              <label htmlFor="">Nombre</label>
+              <input
+                type="text"
+                placeholder="Usuario"
+                className="border-amber-50 border-2 rounded-md p-2 mb-4"
+              />
+              <label htmlFor="">Correo Electrónico</label>
+              <input
+                type="text"
+                placeholder="Correo Electrónico"
+                className="border-amber-50 border-2 rounded-md p-2 mb-4"
+              />
+              <label htmlFor="">Contraseña</label>
+              <input
+                type="password"
+                placeholder="Contraseña"
+                className="border-amber-50 border-2 rounded-md p-2 mb-4"
+              />
+              <label htmlFor="">Código de Verificación</label>
+              <input
+                type="text"
+                placeholder="Código de Verificación"
+                className="border-amber-50 border-2 rounded-md p-2 mb-4"
+              />
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="remember" />
+                <label htmlFor="remember">Recordarme</label>
+              </div>
 
-          <button type="submit" className="bg-blue-500 text-white rounded p-2">
-            Login
-          </button>
-        </form>
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mt-10 rounded"
+              >
+                Iniciar sesión
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
