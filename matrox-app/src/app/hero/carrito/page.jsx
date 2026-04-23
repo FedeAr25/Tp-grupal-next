@@ -139,8 +139,33 @@ export default function page() {
           </div>
           {/* Resumen del carrito y formas de pago */}
           <div className="w-1/3 h-full flex flex-col p-6 gap-4 bg-linear-45 from-gray-900 to-white/20 rounded-r-lg  justify-between">
-            <div className="w-full h-2/5 bg-blue-400 rounded-lg mb-6 flex items-center justify-center shadow-lg">
-              <h3 className="font-sans text-lg font-bold">Formas de pago</h3>
+            <div className="w-full h-auto bg-blue-400 rounded-lg mb-4 flex items-center justify-center shadow-lg flex-col gap-4">
+              <h3 className="font-sans text-lg font-bold mb-5 text-center">
+                Formas de pago
+              </h3>
+              <div className="flex items-center justify-center gap-4">
+                <Image
+                  src="/pagos/mastercard.svg"
+                  alt="Producto 1"
+                  className="object-cover rounded hover:scale-110 transition-transform duration-300"
+                  width={50}
+                  height={50}
+                />
+                <Image
+                  src="/pagos/paypal.svg"
+                  alt="Producto 1"
+                  className="object-cover rounded hover:scale-110 transition-transform duration-300"
+                  width={50}
+                  height={50}
+                />
+                <Image
+                  src="/pagos/visa.svg"
+                  alt="Producto 1"
+                  className="object-cover rounded hover:scale-110 transition-transform duration-300"
+                  width={50}
+                  height={50}
+                />
+              </div>
             </div>
             <div>
               <h3>Resumen del Carrito</h3>

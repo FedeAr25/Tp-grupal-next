@@ -7,7 +7,7 @@ export default function page() {
     <div className="w-full h-full bg-[url(/circuito.jpg)] bg-contain bg-center">
       <div className="w-full h-full backdrop-blur-lg bg-black/40 flex flex-col justify-center items-center">
         <h1 className="bg-clip-text bg-linear-60 from-blue-400 to-purple-500 text-transparent text-6xl font-bold pt-20">
-          MATROX EL MEJOR
+          MATROX TU LUGAR
         </h1>
         <div className="rounded-lg overflow-hidden bg-blue-100 shadow-lg hover:scale-105 transition-all duration-300 my-10">
           <Image src="/gabinete.png" alt="banner" width={900} height={500} />

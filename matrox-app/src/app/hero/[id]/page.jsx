@@ -121,12 +121,26 @@ export default async function asyncpage({ params }) {
                 {producto.nombre}
               </h1>
             </div>
+            <div className="flex gap-4 justify-start items-center">
+              <Image
+                src="/pagos/mastercard.svg"
+                alt="Mastercard"
+                width={30}
+                height={30}
+              />
+              <Image
+                src="/pagos/paypal.svg"
+                alt="PayPal"
+                width={30}
+                height={30}
+              />
+              <Image src="/pagos/visa.svg" alt="Visa" width={30} height={30} />
+            </div>
             <div>
               <h3 className="mb-3 font-semibold">
                 Caracteristicas de producto
               </h3>
               <ul className="space-y-2">
-                {/* Verificamos que existan características antes de mapear */}
                 {producto.caracteristicas?.map((item, index) => (
                   <li key={index} className="text-zinc-700">
                     &bull; {item}
