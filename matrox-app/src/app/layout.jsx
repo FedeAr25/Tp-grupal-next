@@ -45,16 +45,22 @@ export default function RootLayout({ children }) {
                 Home
               </Link>
               <Link
+                href={"/categories"}
+                className="  px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+              >
+                Categorias
+              </Link>
+              <Link
                 href={"/about"}
                 className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
-                About
+                Sobre
               </Link>
               <Link
                 href={"/hero"}
                 className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
-                Hero
+                Catalogo
               </Link>
               <Link
                 href={"/login"}
