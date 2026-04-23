@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function page() {
   return (
     <div className="w-full h-full bg-[url('/6074593.jpg')] bg-cover">
@@ -40,12 +41,18 @@ export default function page() {
                 <label htmlFor="remember">Recordarme</label>
               </div>
 
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mt-10 rounded"
+              <Link
+                href="/hero"
+                className="text-sm text-blue-500 hover:underline mt-2"
+              >
+                No tienes una cuenta? Regístrate aquí
+              </Link>
+              <Link
+                href="/hero"
+                className="bg-orange-500 w-full p-2 rounded text-white text-sm text-center mt-4"
               >
                 Iniciar sesión
-              </button>
+              </Link>
             </form>
           </div>
         </div>
