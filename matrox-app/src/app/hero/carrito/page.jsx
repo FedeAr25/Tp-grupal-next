@@ -139,8 +139,8 @@ export default function page() {
           </div>
           {/* Resumen del carrito y formas de pago */}
           <div className="w-1/3 h-full flex flex-col p-6 gap-4 bg-linear-45 from-gray-900 to-white/20 rounded-r-lg  justify-between">
-            <div className="w-full h-auto bg-blue-400 rounded-lg mb-4 flex items-center justify-center shadow-lg flex-col gap-4">
-              <h3 className="font-sans text-lg font-bold mb-5 text-center">
+            <div className="w-full h-auto bg-linear-to-b from-blue-800  to-transparent rounded-lg mb-4 flex items-center justify-center shadow-lg flex-col gap-2">
+              <h3 className="font-sans text-lg font-bold mb-5 text-center pt-2">
                 Formas de pago
               </h3>
               <div className="flex items-center justify-center gap-4">

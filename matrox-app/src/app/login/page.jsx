@@ -42,13 +42,13 @@ export default function page() {
               </div>
 
               <Link
-                href="/hero"
+                href="/categories"
                 className="text-sm text-blue-500 hover:underline mt-2"
               >
                 No tienes una cuenta? Regístrate aquí
               </Link>
               <Link
-                href="/hero"
+                href="/categories"
                 className="bg-orange-500 w-full p-2 rounded text-white text-sm text-center mt-4"
               >
                 Iniciar sesión
