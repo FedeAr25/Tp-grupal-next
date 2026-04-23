@@ -23,7 +23,7 @@ export default function page() {
             <p className=" bg-black/50 backdrop-blur-xl border-2 rounded-lg p-2 " >PC ARMADAS </p>
           </div>
           <div className="  transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg bg-[url(/notebocks.png)] bg-cover - bg-center w-full h-50 text-2xl  flex flex-col items-center justify-center">
-            <p className=" bg-black/50 backdrop-blur-xs border-2 rounded-lg  "> NOTEBOOK</p> 
+            <p className=" bg-black/50 backdrop-blur-xs border-2 rounded-lg p-2  "> NOTEBOOK</p> 
           </div>
 
           <div className="transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg bg-[url(/componentes.png)] bg-cover bg-center w-full h-50 text-2xl  flex flex-col items-center justify-center">
