@@ -12,9 +12,7 @@ export default function ContactPage() {
 
   return (
     <div className="mt-6">
-      <h2 className="text-xl font-semibold mb-2">
-        Formulario de contacto
-      </h2>
+      <h2 className="text-xl font-semibold mb-2">Formulario de contacto</h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <input
@@ -25,9 +23,7 @@ export default function ContactPage() {
           className="border p-2 rounded"
         />
 
-        <button className="bg-blue-600 text-white p-2 rounded">
-          Enviar
-        </button>
+        <button className="bg-blue-600 text-white p-2 rounded">Enviar</button>
       </form>
     </div>
   );
