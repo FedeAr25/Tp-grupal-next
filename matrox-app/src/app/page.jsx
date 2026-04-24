@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           <div className="h-auto  flex flex-col  items-start  gap-10">
             <h3 className="  text-2xl bg-clip-text text-transparent bg-linear-to-t from-indigo-300 to-purple-500s">
-              LO ULTIMO EN TECNOLOGIA
+              LO MEJOR EN INOVACION PARA VOS
             </h3>
 
 
