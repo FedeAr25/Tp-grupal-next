@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function asyncpage({ params }) {
   const { id } = await params;
 
-  // 1. Tu "Diccionario Ficticio" (Base de datos local)
+
   const productos = {
     1: {
       nombre: "Monitor Logitech H345-2 144hz 1ms 27 2k VA",
