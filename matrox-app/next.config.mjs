@@ -2,6 +2,16 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
+        port: "",
+        pathname: "/**", // Permite cualquier ruta dentro de este dominio
+      },
+    ],
+  },
 };
 
 export default nextConfig;
