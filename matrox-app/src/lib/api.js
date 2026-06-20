@@ -10,7 +10,7 @@ export async function getCategories() {
 }
 
 export async function getProducts({
-  limit = 92,
+  limit = 16,
   skip = 0,
   category = "",
   sortBy = "",
@@ -28,5 +28,14 @@ export async function getProducts({
 
   const res = await fetch(url, { next: { revalidate: 3600 } });
   if (!res.ok) throw new Error("Error al obtener productos");
+  return res.json();
+}
+
+export async function getProductById(id) {
+  const url = `${BASE_URL}/products/${id}`;
+
+  const res = await fetch(url, { next: { revalidate: 3600 } });
+  if (!res.ok) throw new Error(`Error al obtener el producto con ID ${id}`);
+
   return res.json();
 }
