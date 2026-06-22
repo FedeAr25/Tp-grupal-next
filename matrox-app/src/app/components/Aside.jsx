@@ -1,8 +1,16 @@
 import Image from "next/image";
+import { getCategories } from "@/lib/api";
+import CategoryFilter from "../components/CategoryFilter";
 
-export default function Aside() {
+export default async function Aside({ searchParams }) {
+  const resolvedParams = await searchParams;
+
+  const category = resolvedParams?.category;
+
+  const categories = await getCategories();
+
   return (
-    <aside className="w-72 py-8 px-6 border-r border-zinc-700 flex-col flex gap-4 h-screen sticky top-0 justify-center">
+    <aside className="w-72 py-8  pb-24 px-6 border-r border-zinc-700 flex-col flex gap-4 h-screen sticky top-20 justify-between">
       <div className="flex items-center gap-2 mt-10">
         <Image
           src="/Matrox.png"
@@ -11,7 +19,7 @@ export default function Aside() {
           height={400}
           className="w-14 h-14 object-cover"
         />
-        <h1 className="text-3xl font-bold">Matrox.RC</h1>
+        <h1 className="text-2xl font-bold">Matrox.RC</h1>
       </div>
       <div className="bg-red-500 relative rounded-3xl overflow-hidden">
         <svg
@@ -25,6 +33,7 @@ export default function Aside() {
         </svg>
         <input type="text" className="bg-green-100 w-full" />
       </div>
+      <CategoryFilter categories={categories} />
     </aside>
   );
 }

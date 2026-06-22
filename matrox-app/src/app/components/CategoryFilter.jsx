@@ -1,9 +1,11 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function CategoryFilter({ categories, selected }) {
+export default function CategoryFilter({ categories }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const selected = searchParams.get("category") || "";
 
   function handleCategoryChange(e) {
     const slug = e.target.value;
@@ -15,7 +17,7 @@ export default function CategoryFilter({ categories, selected }) {
       params.delete("category");
     }
 
-    router.push(`/hero?${params.toString()}`);
+    router.push(`?${params.toString()}`);
   }
 
   return (
@@ -26,10 +28,9 @@ export default function CategoryFilter({ categories, selected }) {
       >
         Filtrar por Categoría
       </label>
-
       <select
         id="category-select"
-        value={selected || ""}
+        value={selected}
         onChange={handleCategoryChange}
         className={`w-full px-4 py-2.5 rounded-xl border border-zinc-700 outline-none cursor-pointer transition-all duration-200 text-sm ${
           selected
