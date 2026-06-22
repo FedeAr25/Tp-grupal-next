@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
 export default function CarritoPage() {
@@ -55,8 +55,9 @@ export default function CarritoPage() {
         href="/hero"
         className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600 absolute top-4 left-2 z-50 h-10 w-auto flex items-center justify-center"
       >
-        &larr; Ir al Catalogo
+        &larr; Ir al Catálogo
       </Link>
+
       <div className="w-full min-h-screen flex items-center justify-center backdrop-blur-lg py-10">
         <div className="w-11/12 min-h-[80vh] bg-white/30 rounded-lg shadow-lg p-6 flex">
           {/* LADO IZQUIERDO: productos del carrito */}
@@ -145,7 +146,12 @@ export default function CarritoPage() {
             <div className="flex items-center justify-between mt-6">
               <button
                 onClick={handleVaciarCarrito}
-                className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+                disabled={carrito.length === 0}
+                className={`text-white px-4 py-2 rounded-lg ${
+                  carrito.length === 0
+                    ? "bg-gray-600 cursor-not-allowed"
+                    : "bg-gray-900 hover:bg-gray-600"
+                }`}
               >
                 Vaciar Carrito
               </button>
@@ -161,7 +167,12 @@ export default function CarritoPage() {
 
                 <button
                   onClick={aplicarDescuento}
-                  className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+                  disabled={carrito.length === 0}
+                  className={`text-white px-4 py-2 rounded-lg ${
+                    carrito.length === 0
+                      ? "bg-gray-600 cursor-not-allowed"
+                      : "bg-gray-900 hover:bg-green-600"
+                  }`}
                 >
                   Aplicar Descuento
                 </button>
