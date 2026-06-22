@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CartButton from "./CartButton";
 
 export default function Navbar() {
   return (
@@ -40,6 +41,7 @@ export default function Navbar() {
           >
             Catalogo
           </Link>
+          <CartButton />
           <Link
             href={"/login"}
             className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"

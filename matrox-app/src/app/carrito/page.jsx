@@ -1,23 +1,20 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function CarritoPage() {
   // Guarda los productos agregados al carrito
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+    if (typeof window === "undefined") return [];
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+  });
 
   // Guarda el código de descuento escrito por el usuario
   const [codigoDescuento, setCodigoDescuento] = useState("");
 
   // Controla si el descuento está activo
   const [descuentoActivo, setDescuentoActivo] = useState(false);
-
-  // Cuando carga la página, trae el carrito guardado en localStorage
-  useEffect(() => {
-    const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
-    setCarrito(carritoGuardado);
-  }, []);
 
   // Guarda el carrito actualizado en estado y en localStorage
   // Además avisa al navbar que cambió el carrito
@@ -138,7 +135,7 @@ export default function CarritoPage() {
                       <div className="w-56">
                         <h4 className="font-bold">{producto.nombre}</h4>
                         <p className="text-sm text-gray-300">
-                          {producto.descripcion.slice(0, 70)}...
+                          {producto.descripcion?.slice(0, 70)}...
                         </p>
                       </div>
 
