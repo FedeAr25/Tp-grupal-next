@@ -14,7 +14,7 @@ export default function CartButton() {
     } catch {
       return 0;
     }
-  });
+  }});
 
   // Lee el carrito desde localStorage y suma las cantidades
   const actualizarCantidad = () => {
