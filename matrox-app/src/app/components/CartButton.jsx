@@ -5,7 +5,14 @@ import Link from "next/link";
 
 export default function CartButton() {
   // Guarda la cantidad total de productos del carrito
-  const [cantidad, setCantidad] = useState(0);
+  const [cantidad, setCantidad] = useState(() => {
+    try {
+      const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
+      return carritoGuardado.reduce((total, item) => total + item.cantidad, 0);
+    } catch (error) {
+      return 0;
+    }
+  });
 
   // Lee el carrito desde localStorage y suma las cantidades
   const actualizarCantidad = () => {
@@ -25,9 +32,6 @@ export default function CartButton() {
   };
 
   useEffect(() => {
-    // Cuando carga el navbar, lee el carrito actual
-    actualizarCantidad();
-
     // Escucha el evento que disparamos cuando agregamos, eliminamos o vaciamos el carrito
     window.addEventListener("carritoActualizado", actualizarCantidad);
 
