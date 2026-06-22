@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useCart } from "../context/CartContext";
 
@@ -49,7 +50,13 @@ export default function CarritoPage() {
   const total = subtotal - descuento;
 
   return (
-    <div className="w-full min-h-screen bg-[url(/home.png)] bg-cover bg-center">
+    <div className="w-full min-h-screen bg-[url(/home.png)] bg-cover bg-center relative">
+      <Link
+        href="/hero"
+        className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600 absolute top-4 left-2 z-50 h-10 w-auto flex items-center justify-center"
+      >
+        &larr; Ir al Catalogo
+      </Link>
       <div className="w-full min-h-screen flex items-center justify-center backdrop-blur-lg py-10">
         <div className="w-11/12 min-h-[80vh] bg-white/30 rounded-lg shadow-lg p-6 flex">
           {/* LADO IZQUIERDO: productos del carrito */}
@@ -90,7 +97,7 @@ export default function CarritoPage() {
                       <div className="w-56">
                         <h4 className="font-bold">{producto.nombre}</h4>
                         <p className="text-sm text-gray-300">
-                          {producto.descripcion.slice(0, 70)}...
+                          {producto.descripcion?.slice(0, 70)}...
                         </p>
                       </div>
 
