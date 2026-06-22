@@ -21,7 +21,7 @@ export default function Navbar() {
             href={"/"}
             className="  px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
           >
-            Home
+            Principal
           </Link>
           <Link
             href={"/categories"}
@@ -41,12 +41,14 @@ export default function Navbar() {
           >
             Catalogo
           </Link>
+        </div>
+        <div className="flex gap-10 items-center">
           <CartButton />
           <Link
             href={"/login"}
             className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
           >
-            Login
+            Logearse
           </Link>
         </div>
       </div>
