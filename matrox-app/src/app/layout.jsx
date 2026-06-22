@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
+import CartButton from "./components/CartButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,47 +25,56 @@ export default function RootLayout({ children }) {
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col  ">
-        <nav className="bg-zinc-800 bg-cover  bg-no-repeat">
-          <div className="bg-black/15 w-full h-full  text-background items-center justify-between flex px-5">
+      <body className="min-h-full flex flex-col">
+        <nav className="bg-zinc-800 bg-cover bg-no-repeat">
+          <div className="bg-black/15 w-full h-full text-background items-center justify-between flex px-5">
+            {/* Logo del navbar */}
             <div className="justify-self-start flex items-center gap-2">
               <Image
                 src="/Matrox.png"
-                alt="Next.js Logo"
+                alt="Logo Matrox"
                 width={70}
                 height={70}
                 className="object-contain p-2"
               />
             </div>
 
+            {/* Links de navegación */}
             <div className="font-semibold flex gap-8 justify-self-center">
               <Link
                 href={"/"}
-                className="  px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+                className="px-4 py-2 rounded-xl text-amber-50 bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
                 Home
               </Link>
+
               <Link
                 href={"/categories"}
-                className="  px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+                className="px-4 py-2 rounded-xl text-amber-50 bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
                 Categorias
               </Link>
+
               <Link
                 href={"/about"}
-                className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+                className="px-4 py-2 rounded-xl text-amber-50 bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
                 Sobre
               </Link>
+
               <Link
                 href={"/hero"}
-                className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+                className="px-4 py-2 rounded-xl text-amber-50 bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
                 Catalogo
               </Link>
+
+              {/* Botón del carrito con contador */}
+              <CartButton />
+
               <Link
                 href={"/login"}
-                className=" px-4  py-2 rounded-xl text-amber-50  bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
+                className="px-4 py-2 rounded-xl text-amber-50 bg-gray-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:bg-indigo-900/50"
               >
                 Login
               </Link>
@@ -72,21 +82,24 @@ export default function RootLayout({ children }) {
           </div>
         </nav>
 
+        {/* Acá se renderizan las páginas */}
         {children}
 
         <footer className="pt-5 border-t border-white/80 flex bg-zinc-800 justify-between gap-8 items-center mt-auto">
-          <div className=" p-8 flex gap-8 text-gray-400 text-sm font-medium">
+          <div className="p-8 flex gap-8 text-gray-400 text-sm font-medium">
             <div className="flex flex-col">
               <span className="text-white text-xl font-bold">100%</span>
               <span>Compromiso</span>
             </div>
+
             <div className="flex flex-col">
               <span className="text-white text-xl font-bold">Next.js</span>
               <span>Tecnología</span>
             </div>
           </div>
-          <div className="flex flex-col py-7 ">
-            <h1 className="text-xl ">Matrox S.A. </h1>
+
+          <div className="flex flex-col py-7">
+            <h1 className="text-xl">Matrox S.A.</h1>
             <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-300 to-red-400">
               Todos los derechos reservados a Matrox S.A. &copy; 2026
             </span>
@@ -96,7 +109,7 @@ export default function RootLayout({ children }) {
             <div className="bg-linear-to-b from-cyan-600/40 via-violet-400/20 to-transparent rounded-full p-6">
               <Image
                 src="/Matrox.png"
-                alt="Next.js Logo"
+                alt="Logo Matrox"
                 width={80}
                 height={80}
                 className="object-contain"
