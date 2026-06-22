@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CarritoPage() {
   // Guarda los productos agregados al carrito
@@ -94,7 +95,13 @@ export default function CarritoPage() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-[url(/home.png)] bg-cover bg-center">
+    <div className="w-full min-h-screen bg-[url(/home.png)] bg-cover bg-center relative">
+      <Link
+        href="/hero"
+        className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600 absolute top-4 left-2 z-50 h-10 w-auto flex items-center justify-center"
+      >
+        &larr; Ir Al Catalogo
+      </Link>
       <div className="w-full min-h-screen flex items-center justify-center backdrop-blur-lg py-10">
         <div className="w-11/12 min-h-[80vh] bg-white/30 rounded-lg shadow-lg p-6 flex">
           {/* LADO IZQUIERDO: productos del carrito */}

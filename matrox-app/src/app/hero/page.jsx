@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { getProducts, getCategories } from "@/lib/api";
 import ProductCard from "../components/ProductCard";
-import CategoryFilter from "../components/CategoryFilter";
 
 export default async function ProductsPage({ searchParams }) {
   const resolvedParams = await searchParams;
@@ -26,11 +25,6 @@ export default async function ProductsPage({ searchParams }) {
         </h1>
         <div className="rounded-lg overflow-hidden bg-blue-100 shadow-lg hover:scale-105 transition-all duration-300 my-10">
           <Image src="/gabinete.png" alt="banner" width={900} height={500} />
-        </div>
-        <div className="flex items-center gap-4 w-full">
-          <CategoryFilter categories={categories} selected={category} />
-
-          <p className="text-white mt-4">{total} productos</p>
         </div>
 
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-y-30 gap-x-5 bg-white/30 p-6 rounded-lg mt-40 mb-10">
