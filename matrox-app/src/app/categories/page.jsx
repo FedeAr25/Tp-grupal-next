@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { getCategories } from "@/lib/api";
 
-export default function page() {
+export default async function page() {
+  const categories = await getCategories();
+
   return (
-    <div className=" bg-[url(/6074593.jpg)] bg-cover  bg-no-repeat flex flex-col items-center justify-center ">
+    <div className=" bg-[url(/categorie.png)] bg-cover bg-contain bg-no-repeat  flex flex-col items-center justify-center ">
       <main className="  flex w-full max-w-full flex-col items-center justify-center py-6 px-6 ">
         <section className="  flex flex-col min-h-[40vh] items-center justify-center mb-6 text-center sm:text-left rounded-xl ">
           <h1 className="text-6xl font-bold">
@@ -23,48 +25,28 @@ export default function page() {
         </section>
 
         <section className=" overflow-hidden backdrop-blur-3xl grid grid-cols-1 md:grid-cols-2 gap-4 rounded-xl bg-gray-50/5 p-4 w-full max-w-6xl">
-          <Link
-            href="/hero"
-            className=" transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg bg-[url(/pcarmada.png)] text-white bg-cover bg-center w-full h-50 text-2xl flex flex-col items-center justify-center"
-          >
-            <p className=" bg-black/50 backdrop-blur-xl border-2 rounded-lg p-2 ">
-              PC ARMADAS{" "}
-            </p>
-          </Link>
-          <Link
-            href="/hero"
-            className="  transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg bg-[url(/notebocks.png)] bg-cover - bg-center w-full h-50 text-2xl  flex flex-col items-center justify-center"
-          >
-            <p className=" bg-black/50 backdrop-blur-xs border-2 rounded-lg p-2  ">
-              {" "}
-              NOTEBOOK
-            </p>
-          </Link>
-
-          <Link
-            href="/hero"
-            className="transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg bg-[url(/componentes.png)] bg-cover bg-center w-full h-50 text-2xl  flex flex-col items-center justify-center"
-          >
-            <p className=" bg-black/50 backdrop-blur-xs border-2 rounded-lg p-2 ">
-              COMPONETES{" "}
-            </p>
-          </Link>
-
-          <Link
-            href="/hero"
-            className="transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900/30 rounded-lg bg-[url(/software.png)] bg-cover bg-center w-full h-50 text-2xl  flex flex-col items-center justify-center"
-          >
-            <p className=" bg-black/50 backdrop-blur-xs border-2 rounded-lg p-2 ">
-              SOFTWARE
-            </p>
-          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category.slug}
+              href={`/hero/category/${category.slug}`}
+              className=" transition-transform duration-500 ease-in-out hover:scale-105 border-4 border-gray-900 rounded-lg text-white bg-cover bg-center w-full h-50 text-2xl flex flex-col items-center justify-center relative overflow-hidden group"
+              style={{
+                backgroundImage: `url(/categories/${category.slug}.jpg)`,
+              }}
+            >
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all"></div>
+              <p className=" bg-black/50 backdrop-blur-xl border-2 rounded-lg p-2 relative z-10">
+                {category.name.toUpperCase()}
+              </p>
+            </Link>
+          ))}
         </section>
 
         <div className="w-full max-w-6xl mt-6 bg-gray-50/5 backdrop-blur-3xl rounded-xl p-4 text-center">
           <h2 className="text-3xl font-bold mb-2">¿Por qué elegirnos?</h2>
           <p className="text-lg text-gray-300">
             En Matrox, nos apasiona ofrecerte la mejor experiencia de compra de
-            artículos electrónicos. Nuestro compromiso con la calidad, el
+            artículos de todos los indoles. Nuestro compromiso con la calidad, el
             servicio al cliente y la innovación nos distingue. Explora nuestra
             amplia gama de productos y descubre por qué somos tu mejor opción.
           </p>

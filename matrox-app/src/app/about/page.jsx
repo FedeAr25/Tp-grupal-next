@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="w-full min-h-screen bg-[url('/6074593.jpg')] bg-cover flex items-center justify-center">
+    <div className=" backdrop-blur-3xl w-full min-h-screen bg-[url('/nosotros.jpg')] bg-cover flex items-center justify-center">
       
       <div className="w-1/2 bg-white/40 backdrop-blur-md rounded-xl p-10 shadow-lg text-center">
         

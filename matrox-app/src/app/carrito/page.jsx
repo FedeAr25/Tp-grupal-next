@@ -1,69 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "../context/CartContext";
 
 export default function CarritoPage() {
-  // Guarda los productos agregados al carrito
-  const [carrito, setCarrito] = useState(() => {
-    if (typeof window === "undefined") return [];
-    return JSON.parse(localStorage.getItem("carrito")) || [];
-  });
+  const {
+    carrito,
+    eliminarDelCarrito,
+    aumentarCantidad,
+    disminuirCantidad,
+    vaciarCarrito,
+    cantidadTotal,
+    totalCarrito,
+  } = useCart();
 
   // Guarda el código de descuento escrito por el usuario
   const [codigoDescuento, setCodigoDescuento] = useState("");
 
   // Controla si el descuento está activo
   const [descuentoActivo, setDescuentoActivo] = useState(false);
-
-  // Guarda el carrito actualizado en estado y en localStorage
-  // Además avisa al navbar que cambió el carrito
-  const actualizarCarrito = (nuevoCarrito) => {
-    setCarrito(nuevoCarrito);
-    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-
-    // Este evento actualiza el numerito del botón Carrito en el navbar
-    window.dispatchEvent(new Event("carritoActualizado"));
-  };
-
-  // Aumenta la cantidad de un producto
-  const aumentarCantidad = (id) => {
-    const carritoActualizado = carrito.map((item) =>
-      item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item,
-    );
-
-    actualizarCarrito(carritoActualizado);
-  };
-
-  // Disminuye la cantidad de un producto
-  const disminuirCantidad = (id) => {
-    const carritoActualizado = carrito
-      .map((item) =>
-        item.id === id ? { ...item, cantidad: item.cantidad - 1 } : item,
-      )
-      // Si la cantidad queda en 0, elimina el producto
-      .filter((item) => item.cantidad > 0);
-
-    actualizarCarrito(carritoActualizado);
-  };
-
-  // Elimina un producto completo del carrito
-  const eliminarProducto = (id) => {
-    const carritoActualizado = carrito.filter((item) => item.id !== id);
-    actualizarCarrito(carritoActualizado);
-  };
-
-  // Vacía todo el carrito
-  const vaciarCarrito = () => {
-    setCarrito([]);
-    setDescuentoActivo(false);
-    setCodigoDescuento("");
-    localStorage.removeItem("carrito");
-
-    // Avisamos al navbar que el carrito quedó vacío
-    window.dispatchEvent(new Event("carritoActualizado"));
-  };
 
   // Aplica descuento si el código es correcto
   const aplicarDescuento = () => {
@@ -76,11 +33,15 @@ export default function CarritoPage() {
     }
   };
 
-  // Calcula el subtotal del carrito
-  const subtotal = carrito.reduce(
-    (total, item) => total + item.precio * item.cantidad,
-    0,
-  );
+  // Vacía todo el carrito y limpia el descuento
+  const handleVaciarCarrito = () => {
+    vaciarCarrito();
+    setDescuentoActivo(false);
+    setCodigoDescuento("");
+  };
+
+  // El subtotal viene desde el Context
+  const subtotal = totalCarrito;
 
   // Si el descuento está activo, aplica 10%
   const descuento = descuentoActivo ? subtotal * 0.1 : 0;
@@ -88,20 +49,15 @@ export default function CarritoPage() {
   // Total final a pagar
   const total = subtotal - descuento;
 
-  // Cantidad total de productos, sumando cantidades
-  const cantidadTotal = carrito.reduce(
-    (total, item) => total + item.cantidad,
-    0,
-  );
-
   return (
     <div className="w-full min-h-screen bg-[url(/home.png)] bg-cover bg-center relative">
       <Link
         href="/hero"
         className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600 absolute top-4 left-2 z-50 h-10 w-auto flex items-center justify-center"
       >
-        &larr; Ir al Catalogo
+        &larr; Ir al Catálogo
       </Link>
+
       <div className="w-full min-h-screen flex items-center justify-center backdrop-blur-lg py-10">
         <div className="w-11/12 min-h-[80vh] bg-white/30 rounded-lg shadow-lg p-6 flex">
           {/* LADO IZQUIERDO: productos del carrito */}
@@ -175,7 +131,7 @@ export default function CarritoPage() {
 
                       {/* Botón eliminar */}
                       <button
-                        onClick={() => eliminarProducto(producto.id)}
+                        onClick={() => eliminarDelCarrito(producto.id)}
                         className="bg-red-900 text-white px-4 py-2 rounded-lg hover:bg-red-800"
                       >
                         Eliminar 🗑️
@@ -189,8 +145,13 @@ export default function CarritoPage() {
             {/* Acciones inferiores */}
             <div className="flex items-center justify-between mt-6">
               <button
-                onClick={vaciarCarrito}
-                className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+                onClick={handleVaciarCarrito}
+                disabled={carrito.length === 0}
+                className={`text-white px-4 py-2 rounded-lg ${
+                  carrito.length === 0
+                    ? "bg-gray-600 cursor-not-allowed"
+                    : "bg-gray-900 hover:bg-gray-600"
+                }`}
               >
                 Vaciar Carrito
               </button>
@@ -206,7 +167,12 @@ export default function CarritoPage() {
 
                 <button
                   onClick={aplicarDescuento}
-                  className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+                  disabled={carrito.length === 0}
+                  className={`text-white px-4 py-2 rounded-lg ${
+                    carrito.length === 0
+                      ? "bg-gray-600 cursor-not-allowed"
+                      : "bg-gray-900 hover:bg-green-600"
+                  }`}
                 >
                   Aplicar Descuento
                 </button>
