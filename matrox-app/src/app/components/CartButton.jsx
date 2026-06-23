@@ -4,7 +4,48 @@ import Link from "next/link";
 import { useCart } from "@/app/context/CartContext";
 
 export default function CartButton() {
-  const { cantidadTotal } = useCart();
+  // Guarda la cantidad total de productos del carrito
+  const [cantidad, setCantidad] = useState(() => {
+    if (typeof window === "undefined") return 0;
+
+    try {
+      const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
+      return carritoGuardado.reduce((total, item) => total + item.cantidad, 0);
+    } catch {
+      return 0;
+    }
+  }});
+
+  // Lee el carrito desde localStorage y suma las cantidades
+  const actualizarCantidad = () => {
+    try {
+      const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      const totalProductos = carritoGuardado.reduce(
+        (total, item) => total + item.cantidad,
+        0,
+      );
+
+      setCantidad(totalProductos);
+    } catch (error) {
+      // Si hay algún error leyendo localStorage, dejamos el contador en 0
+      setCantidad(0);
+    }
+  };
+
+  useEffect(() => {
+    // Escucha el evento que disparamos cuando agregamos, eliminamos o vaciamos el carrito
+    window.addEventListener("carritoActualizado", actualizarCantidad);
+
+    // También escucha cambios de localStorage entre pestañas
+    window.addEventListener("storage", actualizarCantidad);
+
+    // Limpieza de eventos
+    return () => {
+      window.removeEventListener("carritoActualizado", actualizarCantidad);
+      window.removeEventListener("storage", actualizarCantidad);
+    };
+  }, []);
 
   return (
     <Link
