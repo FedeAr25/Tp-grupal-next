@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useCart } from "@/app/context/CartContext";
 
 export default function CartButton() {
@@ -14,7 +15,7 @@ export default function CartButton() {
     } catch {
       return 0;
     }
-  }});
+  });
 
   // Lee el carrito desde localStorage y suma las cantidades
   const actualizarCantidad = () => {
@@ -64,9 +65,9 @@ export default function CartButton() {
       </svg>
 
       {/* Globito con la cantidad total de productos */}
-      {cantidadTotal > 0 && (
+      {cantidad > 0 && (
         <span className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
-          {cantidadTotal}
+          {cantidad}
         </span>
       )}
     </Link>
