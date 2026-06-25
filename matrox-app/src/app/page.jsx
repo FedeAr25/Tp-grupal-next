@@ -16,7 +16,7 @@ export default function Home() {
             Matrox
           </span>
           <p className="mt-4 text-4xl text-white text-center sm:text-left font-bold">
-            Tecnologia que impulsa tu{" "}
+            Lo que deseas para tu{" "}
             <span className="bg-clip-text text-transparent bg-linear-to-t from-blue-500 to-purple-600">
               dia a dia
             </span>
@@ -79,7 +79,7 @@ export default function Home() {
 
         <section className=" w-auto h-auto flex flex-row gap-20 rounded-r-4xl  items-center justify-between rounded-xl backdrop-blur-lg bg-gray-50/5 p-6 text-center">
           <div className="w-200 h-120 rounded-xl  ">
-            <div className="w-150 h-120 bg-cover bg-center mask-cover mask-[url(/mask/mascara1.png)] bg-[url(/pcarmada.png)]"></div>
+            <div className="w-150 h-120 bg-cover bg-center mask-cover mask-[url(/mask/mascara1.png)] bg-[url(/productos.jpg)]"></div>
           </div>
           <div className="h-auto  flex flex-col  items-start  gap-10">
             <h3 className="  text-2xl bg-clip-text text-transparent bg-linear-to-t from-indigo-300 to-purple-500s">
@@ -89,10 +89,10 @@ export default function Home() {
 
             <div className=" flex  flex-col    text- bg-clip-text text-transparent bg-linear-to-r from-red-500 to-purple-600   text-4xl   items-start justify-start gap-5">
               
-              <p className="text-start">Equipate con lo ultimo en tecnologia</p>
+              <p className="text-start">Equipate con lo ultimo que esta en tendencia</p>
               <div className="w-1/4 h-1 bg-linear-to-r from-blue-500 to-purple-600 my-1 "></div>
               <p className="text-start text-white" >
-                Explora nuestra amplia gama de productos tecnologicos, pensados para ofrecerte la mejor experiencia, rendimiento y calidad.
+                Explora nuestra amplia gama de productos, pensados para ofrecerte la mejor experiencia, variedad y calidad.
               </p>
               <Link
                 href="/login"

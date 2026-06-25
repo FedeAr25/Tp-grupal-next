@@ -13,7 +13,7 @@ export default function page() {
           </p>
         </section>
         <section className="w-full h-100 grid grid-cols-2 gap-4  justify-between rounded-xl border border-gray-300 bg-gray-100 p-4">
-          <div className="w-85 h-45 bg-amber-950 flex flex-col items-center justify-center">  
+          <div className="w-85 h-45 bg-amber-950 flex flex-col items-center justify-center">
           <p>Artículo 1</p>
 
           </div>
@@ -26,14 +26,14 @@ export default function page() {
           </div>
           <div className="w-85 h-45 bg-amber-950 flex flex-col items-center justify-center">
             <p>Artículo 4</p>
-            </div> 
-            
+            </div>
+
 
         </section>
 
 
-        
-        
+
+
       </main>
     </div>
   )

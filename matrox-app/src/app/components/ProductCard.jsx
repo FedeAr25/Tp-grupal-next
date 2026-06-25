@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useCart } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
+
+  const { agregarAlCarrito } = useCart();
 
   // Calculamos el precio con descuento del producto
   const precioConDescuento = (
@@ -12,45 +15,17 @@ export default function ProductCard({ product }) {
     (1 - product.discountPercentage / 100)
   ).toFixed(2);
 
-  // Función para agregar el producto al carrito
-  const agregarAlCarrito = () => {
-    // Creamos un objeto con los datos que vamos a guardar en el carrito
+  // Función para agregar el producto al carrito usando Context
+  const handleAgregarAlCarrito = () => {
     const productoParaCarrito = {
       id: product.id,
       nombre: product.title,
       descripcion: product.description,
       precio: Number(precioConDescuento),
       imagen: product.thumbnail,
-      cantidad: 1,
     };
 
-    // Traemos el carrito actual desde localStorage
-    const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
-
-    // Verificamos si el producto ya existe en el carrito
-    const productoExiste = carritoActual.find(
-      (item) => item.id === productoParaCarrito.id,
-    );
-
-    let carritoActualizado;
-
-    if (productoExiste) {
-      // Si el producto ya existe, aumentamos la cantidad
-      carritoActualizado = carritoActual.map((item) =>
-        item.id === productoParaCarrito.id
-          ? { ...item, cantidad: item.cantidad + 1 }
-          : item,
-      );
-    } else {
-      // Si no existe, lo agregamos por primera vez
-      carritoActualizado = [...carritoActual, productoParaCarrito];
-    }
-
-    // Guardamos el carrito actualizado en localStorage
-    localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
-
-    // Avisamos al navbar que el carrito cambió para actualizar el numerito
-    window.dispatchEvent(new Event("carritoActualizado"));
+    agregarAlCarrito(productoParaCarrito);
 
     // Redirigimos a la página del carrito
     router.push("/carrito");
@@ -103,7 +78,7 @@ export default function ProductCard({ product }) {
           </button>
 
           <button
-            onClick={agregarAlCarrito}
+            onClick={handleAgregarAlCarrito}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Agregar al carrito
