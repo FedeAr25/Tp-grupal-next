@@ -1,20 +1,57 @@
-# Nombre del Proyecto
-### Matrox
+# Matrox
 
-## ¿De que trata la pagina?
+Aplicacion web desarrollada con Next.js que simula un catalogo de productos tecnologicos.
 
-Este proyecto consiste en el desarollo de una aplicacion que simula un catalogo de productos tecnologicos.
-La aplicacion permite visualizar distintos componentes, Navegar entre categorias, Acceder a detalles de productos y recorer diferentes secciones como inicio, contacto y login.
-Esta pensada con una base de e-comerce, aplicando concepros modernos de desarollo Front-End. 
-##  Numero de Grupo y Nombre del Grupo
-    Grupo 16
-    
-    Warriors
- 
- ## Integrantes del grupo
-  > Arballo Federico
+## Descripcion del tema y API integrada
+Matrox es un e-commerce frontend orientado a productos tecnologicos. La app fue pensada para simular una experiencia de compra completa: desde la exploracion del catalogo hasta la gestion del carrito.
 
-  > Cepeda Caceres Emanuel
+Funcionalidades principales:
+- Catalogo dinamico de productos consumido desde una API externa.
+- Filtro por categoria y ordenamiento para facilitar la busqueda.
+- Vista de detalle por producto con informacion ampliada.
+- Seccion de carrito con manejo de cantidades, eliminacion de productos, vaciado total y calculo de subtotal/total.
+- Persistencia del carrito en `localStorage` para mantener la sesion del usuario.
+- Codigo de descuento (`MATROX10`) aplicado sobre el total del carrito.
+- Paginas complementarias de navegacion como inicio, categorias, login, about y contacto.
 
-  > Rodriguez Joaquin
+Se integra la API publica **DummyJSON** (`https://dummyjson.com`), utilizada como fuente de datos para productos y categorias.
 
+Endpoints principales utilizados:
+- `GET /products`
+- `GET /products/categories`
+- `GET /products/{id}`
+
+## Grupo y equipo
+- **Numero de grupo:** 16
+- **Nombre del equipo:** Warriors
+
+## Integrantes
+- Arballo Federico
+- Cepeda Caceres Emanuel
+- Rodriguez Joaquin
+
+## Instrucciones para correr el proyecto en local
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/FedeAr25/Tp-grupal-next.git
+   ```
+2. Entrar al proyecto:
+   ```bash
+   cd Tp-grupal-next/matrox-app
+   ```
+3. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+4. Ejecutar en desarrollo:
+   ```bash
+   npm run dev
+   ```
+5. Abrir en el navegador:
+   - `http://localhost:3000`
+
+## Scripts disponibles
+- `npm run dev`: inicia en modo desarrollo.
+- `npm run build`: genera build de produccion.
+- `npm run start`: ejecuta la app en produccion.
+- `npm run lint`: corre el linter.
