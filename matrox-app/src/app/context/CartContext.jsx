@@ -7,21 +7,24 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
 
-  // Cargar carrito desde localStorage al iniciar
+  // Cargar carrito desde localStorage al montar el componente
   useEffect(() => {
-    const carritoGuardado = localStorage.getItem("carrito");
+    try {
+      const carritoGuardado = localStorage.getItem("carrito");
 
-    if (carritoGuardado) {
-      try {
-        setCarrito(JSON.parse(carritoGuardado));
-      } catch (error) {
-        console.error("Error al leer el carrito:", error);
-        setCarrito([]);
+      if (carritoGuardado) {
+        const carritoParseado = JSON.parse(carritoGuardado);
+
+        if (Array.isArray(carritoParseado)) {
+          setCarrito(carritoParseado);
+        }
       }
+    } catch (error) {
+      console.error("Error al leer el carrito:", error);
     }
   }, []);
 
-  // Guardar carrito en localStorage cada vez que cambia
+  // Guardar carrito cada vez que cambia
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
@@ -29,14 +32,14 @@ export function CartProvider({ children }) {
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => {
       const productoExiste = carritoActual.find(
-        (item) => item.id === producto.id,
+        (item) => item.id === producto.id
       );
 
       if (productoExiste) {
         return carritoActual.map((item) =>
           item.id === producto.id
             ? { ...item, cantidad: item.cantidad + 1 }
-            : item,
+            : item
         );
       }
 
@@ -46,15 +49,17 @@ export function CartProvider({ children }) {
 
   const eliminarDelCarrito = (id) => {
     setCarrito((carritoActual) =>
-      carritoActual.filter((item) => item.id !== id),
+      carritoActual.filter((item) => item.id !== id)
     );
   };
 
   const aumentarCantidad = (id) => {
     setCarrito((carritoActual) =>
       carritoActual.map((item) =>
-        item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item,
-      ),
+        item.id === id
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item
+      )
     );
   };
 
@@ -62,9 +67,11 @@ export function CartProvider({ children }) {
     setCarrito((carritoActual) =>
       carritoActual
         .map((item) =>
-          item.id === id ? { ...item, cantidad: item.cantidad - 1 } : item,
+          item.id === id
+            ? { ...item, cantidad: item.cantidad - 1 }
+            : item
         )
-        .filter((item) => item.cantidad > 0),
+        .filter((item) => item.cantidad > 0)
     );
   };
 
@@ -74,12 +81,12 @@ export function CartProvider({ children }) {
 
   const cantidadTotal = carrito.reduce(
     (total, item) => total + item.cantidad,
-    0,
+    0
   );
 
   const totalCarrito = carrito.reduce(
     (total, item) => total + item.precio * item.cantidad,
-    0,
+    0
   );
 
   return (

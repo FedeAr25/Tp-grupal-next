@@ -1,52 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { useCart } from "@/app/context/CartContext";
 
 export default function CartButton() {
-  // Guarda la cantidad total de productos del carrito
-  const [cantidad, setCantidad] = useState(() => {
-    if (typeof window === "undefined") return 0;
-
-    try {
-      const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
-      return carritoGuardado.reduce((total, item) => total + item.cantidad, 0);
-    } catch {
-      return 0;
-    }
-  });
-
-  // Lee el carrito desde localStorage y suma las cantidades
-  const actualizarCantidad = () => {
-    try {
-      const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
-
-      const totalProductos = carritoGuardado.reduce(
-        (total, item) => total + item.cantidad,
-        0,
-      );
-
-      setCantidad(totalProductos);
-    } catch (error) {
-      // Si hay algún error leyendo localStorage, dejamos el contador en 0
-      setCantidad(0);
-    }
-  };
-
-  useEffect(() => {
-    // Escucha el evento que disparamos cuando agregamos, eliminamos o vaciamos el carrito
-    window.addEventListener("carritoActualizado", actualizarCantidad);
-
-    // También escucha cambios de localStorage entre pestañas
-    window.addEventListener("storage", actualizarCantidad);
-
-    // Limpieza de eventos
-    return () => {
-      window.removeEventListener("carritoActualizado", actualizarCantidad);
-      window.removeEventListener("storage", actualizarCantidad);
-    };
-  }, []);
+  const { cantidadTotal } = useCart();
 
   return (
     <Link
@@ -65,9 +23,9 @@ export default function CartButton() {
       </svg>
 
       {/* Globito con la cantidad total de productos */}
-      {cantidad > 0 && (
+      {cantidadTotal > 0 && (
         <span className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
-          {cantidad}
+          {cantidadTotal}
         </span>
       )}
     </Link>

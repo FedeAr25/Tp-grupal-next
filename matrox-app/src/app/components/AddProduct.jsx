@@ -1,46 +1,33 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/app/context/CartContext";
 
 export default function AddProduct({ product }) {
   const router = useRouter();
+  const { agregarAlCarrito } = useCart();
+
   const precioConDescuento = (
     product.price *
     (1 - product.discountPercentage / 100)
   ).toFixed(2);
 
-  const agregarAlCarrito = () => {
+  const handleAgregarAlCarrito = () => {
     const productoParaCarrito = {
       id: product.id,
       nombre: product.title,
+      descripcion: product.description,
       precio: Number(precioConDescuento),
       imagen: product.thumbnail,
-      cantidad: 1,
     };
 
-    const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productoExiste = carritoActual.find(
-      (item) => item.id === productoParaCarrito.id,
-    );
-
-    let carritoActualizado;
-    if (productoExiste) {
-      carritoActualizado = carritoActual.map((item) =>
-        item.id === productoParaCarrito.id
-          ? { ...item, cantidad: item.cantidad + 1 }
-          : item,
-      );
-    } else {
-      carritoActualizado = [...carritoActual, productoParaCarrito];
-    }
-
-    localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
-    window.dispatchEvent(new Event("carritoActualizado"));
+    agregarAlCarrito(productoParaCarrito);
     router.push("/carrito");
   };
 
   return (
     <button
-      onClick={agregarAlCarrito}
+      onClick={handleAgregarAlCarrito}
+      type="button"
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     >
       Agregar al carrito

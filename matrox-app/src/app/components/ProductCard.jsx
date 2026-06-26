@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "../context/CartContext";
 
@@ -70,15 +71,16 @@ export default function ProductCard({ product }) {
 
         {/* Botones */}
         <div className="flex gap-2 mt-4 bg-zinc-600 p-2 rounded">
-          <button
-            onClick={() => router.push(`/hero/${product.id}`)}
+          <Link
+            href={`/hero/${product.id}`}
             className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
           >
             Ver detalles
-          </button>
+          </Link>
 
           <button
             onClick={handleAgregarAlCarrito}
+            type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Agregar al carrito

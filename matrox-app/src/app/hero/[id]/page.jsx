@@ -77,7 +77,7 @@ export default async function ProductDescriptionPage({ params }) {
                 {product.title}
               </h1>
 
-              <p className="text-zinc-700">{product.descripcion}</p>
+              <p className="text-zinc-700">{product.description}</p>
             </div>
 
             {/* Formas de pago */}
